@@ -40,3 +40,15 @@ class Obj:
         
         else:
             return False
+        
+# Unit Test
+
+#newObj = Obj(1, 2, 'A')
+#print("X: ", newObj.getX(), " Y: ", newObj.getY(), " Symbol: ", newObj.getSym(), "\n")
+
+#obj2 = Obj(3, 4, 'B')
+
+#newObj.copyObj(obj2)
+#print("X: ", newObj.getX(), " Y: ", newObj.getY(), " Symbol: ", newObj.getSym(), "\n")
+
+#print("Is Equal: ", newObj.isEqual(obj2), "\n")

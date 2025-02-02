@@ -2,6 +2,8 @@ from Obj import Obj
 
 class ObjList:
     def __init__(self):
+        self.__head = None
+        self.__tail = None
         self.__length = 0
         self.__chain = []
         
@@ -24,22 +26,27 @@ class ObjList:
             return self.__chain[-1]
         
     def insertHead(self, obj):
-        obj.setNext(self.getHead())
+        obj.setNext(self.__head)
         self.__head = obj
         
-        self.__length = self.__length + 1
+        if self.__length == 0:
+            self.__tail = obj
+            self.__chain.append(obj)
+        
+        self.__length += 1
         
     def append(self, obj):
-        curr = self.__head
-        
-        while curr != None:
-            curr = curr.getNext()
+        if self.__length == 0:
+            self.__head = obj
+            self.__tail = obj
             
-        curr.next = obj
+        else:
+            self.__tail.setNext(obj)
+            self.__tail = obj
+            
+        self.__chain.append(obj)
         
-        self.__tail = obj
-        
-        self.__length = self.__length + 1
+        self.__length += 1
         
     def removeTail(self):
         curr = self.__head
@@ -51,4 +58,20 @@ class ObjList:
         
         self.__tail = curr
         
-        self.__length = self.__length - 1
+        self.__length -= 1
+        
+# Unit Test
+
+#objList = ObjList()
+
+#obj1 = Obj(1, 2, 'A')
+#obj2 = Obj(3, 4, 'B')
+#obj3 = Obj(5, 6, 'C')
+
+#objList.append(obj1)
+#objList.append(obj2)
+#objList.append(obj3)
+
+#print("Head: ", objList.getHead().getSym(), "\n")
+#print("Tail: ", objList.getTail().getSym(), "\n")
+#print("Element 1: ", objList.getElement(1).getSym(), "\n")

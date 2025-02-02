@@ -1,3 +1,4 @@
+import os
 from Obj import Obj
 
 class Map:
@@ -19,6 +20,14 @@ class Map:
         x = obj.getX()
 
         self.__array2D[y][x] = obj.getSym()
+
+    def clear_screen():
+        # For Windows
+        if os.name == 'nt':
+            os.system('cls')
+        # For macOS and Linux
+        else:
+            os.system('clear')
             
     def printMap(self):
         row = ""
@@ -30,5 +39,13 @@ class Map:
             row = row + "\n"
             
         print(row)
-            
-            
+        
+# Unit Test
+
+#map = Map(10, 10)
+
+#obj = Obj(4, 2, '@')
+
+#map.updateMap(obj)
+
+#map.printMap()

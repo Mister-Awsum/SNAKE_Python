@@ -12,6 +12,24 @@ class GameMechs:
         
         self.__playersnake.insertHead(test)
         
+    def moveSnake(self, direction):
+        if direction == 'w' or direction == 'W':
+            self.__playersnake.insertHead(Obj(self.__playersnake.getHead().getX(), self.__playersnake.getHead().getY() - 1, '@'))
+            self.__playersnake.removeTail()
+            
+        elif direction == 's' or direction == 'S':
+            self.__playersnake.insertHead(Obj(self.__playersnake.getHead().getX(), self.__playersnake.getHead().getY() + 1, '@'))
+            self.__playersnake.removeTail()
+            
+        elif direction == 'a' or direction == 'A':
+            self.__playersnake.insertHead(Obj(self.__playersnake.getHead().getX() - 1, self.__playersnake.getHead().getY(), '@'))
+            self.__playersnake.removeTail()
+            
+        elif direction == 'd' or direction == 'D':
+            self.__playersnake.insertHead(Obj(self.__playersnake.getHead().getX() + 1, self.__playersnake.getHead().getY(), '@'))
+            self.__playersnake.removeTail()
+        
+        
     def clearscreen(self):
         # For Windows
         if os.name == 'nt':
@@ -20,12 +38,13 @@ class GameMechs:
         else:
             os.system('clear')
     
-    def printGameBoard(self):
-        #curr = self.__playersnake.getHead()
-        
-        #while(curr != None):
-            #self.__gameboard.updateMap(curr)
-            #curr = curr.getNext()
-        
+    def printGameBoard(self):        
         self.clearscreen()
-        self.__gameboard.printMap() 
+        self.__gameboard.printMap()
+        
+# Unit Test
+
+game = GameMechs(20, 50)
+
+game.clearscreen()
+game.printGameBoard()

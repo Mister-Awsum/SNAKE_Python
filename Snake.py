@@ -1,9 +1,14 @@
 from GameMechs import GameMechs
 
+exitFlag = False
+
 # Big Functions
 
 def initialize():
-    
+    game = GameMechs(20, 50)
+    game.clearscreen()
+    game.printGameBoard()
+    exitFlag = False
 
 def getInput():
     
